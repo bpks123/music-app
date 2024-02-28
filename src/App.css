@@ -17,12 +17,18 @@
     gap: 5px;
     justify-content: center;
 }
+
 .musicCard{
     height: 200px;
     width: 200px;
     margin-top: 20px;
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
+}
+.musicCard:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s;
 }
 .artist{
     font-size: 14px;
