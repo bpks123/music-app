@@ -4,12 +4,14 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Registar'
 import Library from './pages/Library'
+import Navbar from './components/Navbar'
 
 
 function App() {
   return (
     <>
     <Router>
+      <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
@@ -17,7 +19,6 @@ function App() {
         <Route path='/library' element={<Library/>}/>
       </Routes>
     </Router>
-      Welcome to new project
     </>
   );
 }
