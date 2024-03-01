@@ -26,11 +26,7 @@ export default function Home() {
   return (
     <>
       <div className='global-container'>
-        <div className='left-sidebar'>
-            <Sidebar/>
-        </div>
-        <div className='right-sidebar'>
-
+        
           <div className='music-container'>
           {
             getData.map((obj,index)=>{
@@ -46,7 +42,6 @@ export default function Home() {
               
             })
           }
-          </div>
         </div>
       </div>
     </>
