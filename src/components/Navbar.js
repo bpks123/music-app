@@ -6,6 +6,8 @@ export default function Navbar() {
   const [{token,userName},dispatch]=useStateProvider()
 
 const onHandlerSignOut=()=>{
+  sessionStorage.removeItem('token')
+  sessionStorage.removeItem('userName')
   dispatch({type:'SET_TOKEN',payload:null})
   dispatch({type:'SET_NAME',payload:null})
   navigate('/')

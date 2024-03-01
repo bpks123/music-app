@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../components/Sidebar'
+import MusicPlayer from '../components/MusicPlayer'
 import MusicCard from '../components/MusicCard'
 export default function Home() {
   const [getData,setData]=useState([])
@@ -37,6 +37,7 @@ export default function Home() {
                 thumbnail={obj.thumbnail}
                 artist={obj.artist}
                 id={index}
+                song={obj}
               />
               )
               
@@ -44,6 +45,7 @@ export default function Home() {
           }
         </div>
       </div>
+      <MusicPlayer/>
     </>
   )
 }

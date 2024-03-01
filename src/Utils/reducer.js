@@ -1,11 +1,11 @@
 export const initialState = {
     list: null,
-    token: null,
+    token: sessionStorage.getItem('token'),
     selectedCard: null,
     selectedSong: null,
     selectedArtist: null,
     searchClicked: false,
-    userName: null,
+    userName: sessionStorage.getItem('userName'),
     id: null,
     favorites: [],
     searchSong: null,

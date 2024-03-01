@@ -1,15 +1,19 @@
 import React from 'react'
-
+import { useStateProvider} from '../Utils/StateProvider'
 export default function MusicCard(props) {
-  const {title,thumbnail,artist,id}=props
+  const [{selectedSong},dispatch]=useStateProvider()
+  const {title,thumbnail,artist,id,song}=props
   const artistList=artist.map((item)=>item.name).join(' & ')
 
-  const show=(tit)=>{
-    console.log(tit)
+  const show=(song)=>{
+
+    dispatch({type:'SET_SELECTED_SONG',payload:song})
+    console.log(song)
+    
   }
   return (
     <>
-      <section className='musicCard' onClick={()=>show(title)}>
+      <section className='musicCard' onClick={()=>show(song)}>
         <img
           src={thumbnail}
           height={"150"}
