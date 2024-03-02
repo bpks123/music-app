@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { StateProvider} from './Utils/StateProvider';
+import reducer,{initialState} from './Utils/reducer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <StateProvider initialState={initialState} reducer={reducer}>
+        <App />
+    </StateProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

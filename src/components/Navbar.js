@@ -26,19 +26,19 @@ const onHandlerSignOut=()=>{
         <li className="nav-item">
           <div className='d-flex justify-content-center align-items-center' onClick={()=>navigate('/')}>
             <i className="fa-solid fa-house" style={{fontSize:'14px'}}></i>
-            <a className="nav-link active" aria-current="page" href="#" style={{fontWeight:'700'}}>Home</a>        
+            <span className="nav-link active" aria-current="page" style={{fontWeight:'700'}}>Home</span>
           </div>
         </li>
         <li className="nav-item">
           <div  className='d-flex justify-content-center align-items-center' onClick={()=>navigate('/social')}>
             <i className="fa-solid fa-share-from-square" style={{fontSize:'14px'}}></i>
-            <a className="nav-link active" aria-current="page" href="#" style={{fontWeight:'700'}}>Social</a>
+            <span className="nav-link active" aria-current="page" style={{fontWeight:'700'}}>Social</span>
           </div>
         </li>
         <li className="nav-item">
           <div className='d-flex justify-content-center align-items-center' onClick={()=>navigate('/library')}>
           <i className="fa-solid fa-headphones" style={{fontSize:'14px'}}></i>
-          <a className="nav-link active" aria-current="page" href="#" style={{fontWeight:'700'}}>Library</a>
+          <span className="nav-link active" aria-current="page" style={{fontWeight:'700'}}>Library</span>
           </div>
         </li>
         

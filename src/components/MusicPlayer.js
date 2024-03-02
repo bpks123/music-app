@@ -1,11 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useStateProvider} from '../Utils/StateProvider'
+import axios from 'axios'
+
 export default function MusicPlayer() {
-  const [{selectedSong},dispatch]=useStateProvider()
+  const [{selectedSong,token},dispatch]=useStateProvider()
+  const [getWatchlist,setWatchList]=useState(false)
+  let artistList
+  if(selectedSong){
+    artistList=selectedSong.artist.map((item)=>item.name).join(' & ')
+  }
+  const onHandlerwishList= async(songId)=>{
+    // axios.patch('https://academics.newtonschool.co/api/v1/music/favorites/like', { songId: songId }, {
+    //   headers: {
+    //     projectID: 'l2uaz7omaxbe',
+    //     Authorization:`Bearer ${token}`
+    //   }
+    // })
+    let response =await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{
+      method:'PATCH',
+      headers:{
+        projectID: 'l2uaz7omaxbe',
+        Authorization:`Bearer ${token}`
+      },
+      body: JSON.stringify({ songId: songId })
+    })
+    response=await response.json()
+    console.log(response)
+    setWatchList(true)
+  }
   return (
     <>
-     <h1>Music Player</h1>
-     <audio controls src={selectedSong.audio_url}/>
+    {
+      selectedSong ? (
+      <section className='music-player'>      
+        <img
+              src={selectedSong.thumbnail}
+              height={"50"}
+              width={"50"}
+              className='bannerImg'
+            />
+        <div style={{width:'300px'}}>
+            <div className='music-title'>{selectedSong.title}</div>
+            <div className='artist'>
+                {artistList}
+            </div>
+        </div>
+          
+        <audio controls src={selectedSong.audio_url} style={{marginLeft:"20px"}}/>
+        {token && !getWatchlist && <i className="fa-regular fa-heart" style={{fontSize:'30px'}} onClick={()=>onHandlerwishList(selectedSong._id)}></i>}
+        {token && getWatchlist && <i className="fa-solid fa-heart" style={{fontSize:'30px',color:'red'}} ></i>}
+
+      </section>):("")
+    }     
     </>
   )
 }
