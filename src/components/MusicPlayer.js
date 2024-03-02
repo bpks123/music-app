@@ -15,14 +15,17 @@ export default function MusicPlayer() {
     //     projectID: 'l2uaz7omaxbe',
     //     Authorization:`Bearer ${token}`
     //   }
-    // })
+    // })//This is method to do favorite the song using Axios
+    console.log(songId)
     let response =await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{
       method:'PATCH',
-      headers:{
+      headers: {
         projectID: 'l2uaz7omaxbe',
-        Authorization:`Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ songId: songId })
+      
     })
     response=await response.json()
     console.log(response)
