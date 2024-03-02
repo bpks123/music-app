@@ -2,6 +2,7 @@
     display: flex;
     gap: 5px;
     background-color: rgb(146, 144, 144);
+    min-height: 550px;
 }
 .music-container{
     display: flex;

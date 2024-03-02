@@ -6,7 +6,7 @@ export default function MusicPlayer() {
   const [{selectedSong,token},dispatch]=useStateProvider()
   const [getWatchlist,setWatchList]=useState(false)
   let artistList
-  if(selectedSong){
+  if(selectedSong && selectedSong.artist[0].name){
     artistList=selectedSong.artist.map((item)=>item.name).join(' & ')
   }
   const onHandlerwishList= async(songId)=>{
@@ -21,7 +21,7 @@ export default function MusicPlayer() {
       method:'PATCH',
       headers: {
         projectID: 'l2uaz7omaxbe',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,//we give this to understand backend I am loggedin.
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ songId: songId })

@@ -3,7 +3,11 @@ import { useStateProvider} from '../Utils/StateProvider'
 export default function MusicCard(props) {
   const [{selectedSong},dispatch]=useStateProvider()
   const {title,thumbnail,artist,id,song}=props
-  const artistList=artist.map((item)=>item.name).join(' & ')
+  let artistList
+  if(artist){
+     artistList=artist.map((item)=>item.name).join(' & ')
+
+  }
 
   const show=(song)=>{
 
