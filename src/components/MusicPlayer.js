@@ -60,9 +60,9 @@ useEffect(()=>{
     response=await response.json()
     console.log(response)
     setWatchList(true)
-    const favoriteSong=[]
-    favoriteSong.push(selectedSong)
-    dispatch({type:"ADD_FAVORITE",payload:favoriteSong})//Use only to render when we do click to favorite
+    // const favoriteSong=[]
+    // favoriteSong.push(selectedSong)
+    // dispatch({type:"ADD_FAVORITE",payload:favoriteSong})//Use only to render when we do click to favorite
   }
   const onHandleRemoveWishlist= async(songId)=>{
     let response =await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{
@@ -77,9 +77,9 @@ useEffect(()=>{
     })
     response=await response.json()
     setWatchList(false)
-    const favoriteSong=[]
-    favoriteSong.push(selectedSong)
-    dispatch({type:"ADD_FAVORITE",payload:favoriteSong})//Use only to render when we do click to favorite
+    // const favoriteSong=[]
+    // favoriteSong.push(selectedSong)
+    // dispatch({type:"ADD_FAVORITE",payload:favoriteSong})//Use only to render when we do click to favorite
 
    
   }

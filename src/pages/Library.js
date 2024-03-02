@@ -20,7 +20,7 @@ async function favorite(){
   })
   response=await response.json()
   const data=response.data.songs
-  console.log(data)
+  // console.log(data)
   setData(data)
 }
   return (
