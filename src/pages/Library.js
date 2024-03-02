@@ -3,13 +3,14 @@ import { useStateProvider } from '../Utils/StateProvider';
 import MusicCard from '../components/MusicCard'
 import MusicPlayer from '../components/MusicPlayer';
 export default function Library() {
-  const [{token,selectedSong},dispatch]=useStateProvider()
+  const [{token,selectedSong,favorites},dispatch]=useStateProvider()
   const [getData,setData]=useState([])
- 
+  // console.log(favorites)
 
   useEffect(()=>{
     favorite();
   },[])
+ 
 async function favorite(){
   let response=await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{
     headers:{
