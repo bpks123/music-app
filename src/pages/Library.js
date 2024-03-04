@@ -26,6 +26,24 @@ async function favorite(){
   // console.log(data)
   setData(data)
 }
+const onHandleRemoveWishlist= async(songId)=>{
+  let response =await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{
+    method:'PATCH',
+    headers: {
+      projectID: 'l2uaz7omaxbe',
+      Authorization: `Bearer ${token}`,//we give this to understand backend I am loggedin.
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ songId: songId })
+    
+  })
+  response=await response.json()
+  const favoriteSong=[]
+  favoriteSong.push(selectedSong)
+  dispatch({type:"ADD_FAVORITE",payload:favoriteSong})//Use only to render when we do click to favorite
+
+ 
+}
   return (
     <>
       <div style={{backgroundColor:'rgb(146, 144, 144)',minHeight:'528px'}}>
@@ -33,7 +51,8 @@ async function favorite(){
           <div className='music-container' >
           {
             getData.map((obj,index)=>{
-              return (
+              return (<div>
+                <div>
                 <MusicCard
                 key={index}
                 title={obj.title}
@@ -42,7 +61,17 @@ async function favorite(){
                 id={index}
                 song={obj}
               />
+                </div>
+               
+              <div style={{textAlign:'center',cursor:'pointer'}}
+              
+              >
+                <i class="fa-solid fa-trash" onClick={()=>onHandleRemoveWishlist(obj._id)}></i></div>
+              </div>
+                
+              
               )
+              
               
             })
           }
