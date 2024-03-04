@@ -7,9 +7,12 @@ export default function Library() {
   const [getData,setData]=useState([])
   // console.log(favorites)
 
+  // useEffect(()=>{
+  //   favorite();
+  // },[])
   useEffect(()=>{
-    favorite();
-  },[])
+    favorite()
+  },[favorites])
  
 async function favorite(){
   let response=await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{

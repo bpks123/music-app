@@ -8,8 +8,10 @@ export default function Navbar() {
 const onHandlerSignOut=()=>{
   sessionStorage.removeItem('token')
   sessionStorage.removeItem('userName')
+  sessionStorage.removeItem('userEmail')
   dispatch({type:'SET_TOKEN',payload:null})
   dispatch({type:'SET_NAME',payload:null})
+  dispatch({type:'SET_EMAIL',payload:null})
   navigate('/')
 }
 
@@ -64,6 +66,7 @@ const onHandlerSignOut=()=>{
             </a>
             <ul className="dropdown-menu">
               <li><button className="dropdown-item" onClick={onHandlerSignOut}>Sign Out</button></li>
+              <li><button className="dropdown-item" onClick={()=>navigate('/updatePassword')}>Update Password</button></li>
             </ul>
           </li>
   

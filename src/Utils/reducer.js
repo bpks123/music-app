@@ -8,6 +8,7 @@ export const initialState = {
     userName: sessionStorage.getItem('userName'),
     id: null,
     favorites: [],
+    userEmail:sessionStorage.getItem('userEmail'),
     searchSong: null,
   };
 
@@ -27,6 +28,8 @@ export const initialState = {
       return { ...state, token: action.payload };
     case "SET_NAME":
       return { ...state, userName: action.payload };
+    case "SET_EMAIL":
+      return { ...state, userEmail: action.payload };
     case "SET_SEARCH_SONG":
       return { ...state, searchSong: action.payload };
     case "ADD_FAVORITE":

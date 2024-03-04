@@ -6,6 +6,7 @@ import Register from './pages/Registar'
 import Library from './pages/Library'
 import Navbar from './components/Navbar'
 import Social from './pages/Social';
+import UpdatePassword from './pages/UpdatePassword';
 import { useStateProvider } from './Utils/StateProvider';
 
 
@@ -18,7 +19,7 @@ function App() {
       return children
     }
     else{
-      alert("Please login see library")
+      alert("Please login!! to go this page...")
       return <Navigate to="/login"/>
     }
   }
@@ -35,6 +36,9 @@ function App() {
           <Library/>
         </ProtectedRoute>}/>
         <Route path='/social' element={<Social/>}/>
+        <Route path='/updatePassword' element={<ProtectedRoute>
+          <UpdatePassword/>
+        </ProtectedRoute>}/>
       </Routes>
     </Router>
     </>

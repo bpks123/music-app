@@ -32,14 +32,17 @@ export default function Login() {
         // console.log(result.token)
         const usertoken=result.token
         const accountName=result.data.name
+        const accountEmail=result.data.email
         console.log(token)
         console.log(userName)
         dispatch({type:'SET_TOKEN',payload:usertoken})
         dispatch({type:'SET_NAME',payload:accountName})
+        dispatch({type:'SET_EMAIL',payload:accountEmail})
         navigate("/")
         alert('Sing in succefully')
         sessionStorage.setItem('token', usertoken)
         sessionStorage.setItem('userName',accountName)
+        sessionStorage.setItem('userEmail',accountEmail)
       }
       else{
         let result= await response.json()
