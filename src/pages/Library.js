@@ -51,7 +51,7 @@ const onHandleRemoveWishlist= async(songId)=>{
           <div className='music-container' >
           {
             getData.map((obj,index)=>{
-              return (<div>
+              return (<div key={index}>
                 <div>
                 <MusicCard
                 key={index}
@@ -66,7 +66,7 @@ const onHandleRemoveWishlist= async(songId)=>{
               <div style={{textAlign:'center',cursor:'pointer'}}
               
               >
-                <i class="fa-solid fa-trash" onClick={()=>onHandleRemoveWishlist(obj._id)}></i></div>
+                <i className="fa-solid fa-trash" onClick={()=>onHandleRemoveWishlist(obj._id)}></i></div>
               </div>
                 
               
