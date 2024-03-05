@@ -52,7 +52,7 @@ const onHandleRemoveWishlist= async(songId)=>{
           {
             getData.map((obj,index)=>{
               return (<div key={index}>
-                <div>
+                
                 <MusicCard
                 key={index}
                 title={obj.title}
@@ -61,13 +61,9 @@ const onHandleRemoveWishlist= async(songId)=>{
                 id={index}
                 song={obj}
               />
-                </div>
-               
-              <div style={{textAlign:'center',cursor:'pointer'}}
-              
-              >
-                <i className="fa-solid fa-trash" onClick={()=>onHandleRemoveWishlist(obj._id)}></i></div>
-              </div>
+              <i className="fa-solid fa-trash" 
+                style={{background:'white',marginLeft:'40%',cursor:'pointer',padding:'10px',borderRadius:'50%'}}
+              onClick={()=>onHandleRemoveWishlist(obj._id)}></i></div>
                 
               
               )

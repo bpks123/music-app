@@ -12,7 +12,7 @@
 }
 
 .musicCard{
-    height: 230px;
+    min-height: 230px;
     width: 230px;
     margin-top: 20px;
     padding: 5px;
@@ -95,4 +95,30 @@ a{
     align-items: center;
     gap: 15px;
     padding-left: 10px;
+}
+.music-long{
+    display: none;
+}
+.favorite-icon{
+    font-size: 25px;
+}
+@media (max-width:800px) {
+    .music-player{
+        height: 6rem;
+        justify-content: center;
+    }
+    .music-sort{
+        display: none;
+    }
+    .music-long{
+        display: block;
+    }
+    .favorite-icon{
+        margin-right: 10%;
+        /* padding-right: 10%; */
+    }
+
+}
+@media (max-width:500px) {
+    
 }

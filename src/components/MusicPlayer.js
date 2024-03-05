@@ -97,16 +97,23 @@ useEffect(()=>{
             {
               token ? (
                 <>
-                <div style={{width:'300px'}}>
+                <div style={{width:'300px'}} className='music-sort'>
                 <div className='music-title'>{selectedSong.title}</div>
                 <div className='artist'>
                     {artistList}
                 </div>
             </div>
-              
-            <audio controls src={selectedSong.audio_url} style={{marginLeft:"20px"}}/>
-            {token && !getWatchlist && <i className="fa-regular fa-heart" style={{fontSize:'30px'}} onClick={()=>onHandlerwishList(selectedSong._id)}></i>}
-            {token && getWatchlist && <i className="fa-solid fa-heart" style={{fontSize:'30px',color:'red'}} onClick={()=>onHandleRemoveWishlist(selectedSong._id)}></i>}
+            <div>
+              <div className='d-flex justify-content-center ' style={{gap:'10px',padding:'10px'}}>
+              <div className='music-title music-long'>{selectedSong.title}</div>
+              {token && !getWatchlist && <i className="fa-regular fa-heart favorite-icon music-long" onClick={()=>onHandlerwishList(selectedSong._id)}></i>}
+              {token && getWatchlist && <i className="fa-solid fa-heart favorite-icon music-long" style={{color:'red'}} onClick={()=>onHandleRemoveWishlist(selectedSong._id)}></i>}
+           
+              </div>
+            <audio controls autoPlay src={selectedSong.audio_url} style={{marginLeft:"20px"}}/>
+            </div>
+            {token && !getWatchlist && <i className="fa-regular fa-heart favorite-icon music-sort" onClick={()=>onHandlerwishList(selectedSong._id)}></i>}
+            {token && getWatchlist && <i className="fa-solid fa-heart favorite-icon music-sort" style={{color:'red'}} onClick={()=>onHandleRemoveWishlist(selectedSong._id)}></i>}
             </>
               ):(<>
               <div>Please SignUp First</div>
