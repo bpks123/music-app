@@ -6,6 +6,7 @@ import Register from './pages/Registar'
 import Library from './pages/Library'
 import Navbar from './components/Navbar'
 import Social from './pages/Social';
+import SearchSong from './pages/SearchSong';
 import UpdatePassword from './pages/UpdatePassword';
 import { useStateProvider } from './Utils/StateProvider';
 
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/search' element={<SearchSong/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/library' element={<ProtectedRoute>
           <Library/>

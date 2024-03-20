@@ -7,9 +7,9 @@ export default function MusicPlayer() {
   const [{selectedSong,token,favorites},dispatch]=useStateProvider()
   const navigate=useNavigate()
   const [getWatchlist,setWatchList]=useState(false)
-  let artistList
+  let artistList=''
 
-  if(selectedSong && selectedSong.artist[0].name){
+  if(selectedSong && selectedSong.artist.length>0 && selectedSong.artist[0].name){
     artistList=selectedSong.artist.map((item)=>item.name).join(' & ')
   }
 useEffect(()=>{
@@ -110,7 +110,7 @@ useEffect(()=>{
               {token && getWatchlist && <i className="fa-solid fa-heart favorite-icon music-long" style={{color:'red'}} onClick={()=>onHandleRemoveWishlist(selectedSong._id)}></i>}
            
               </div>
-            <audio controls autoPlay src={selectedSong.audio_url} style={{marginLeft:"20px"}}/>
+            <audio className='music-audio' controls autoPlay src={selectedSong.audio_url} style={{marginLeft:"20px"}}/>
             </div>
             {token && !getWatchlist && <i className="fa-regular fa-heart favorite-icon music-sort" onClick={()=>onHandlerwishList(selectedSong._id)}></i>}
             {token && getWatchlist && <i className="fa-solid fa-heart favorite-icon music-sort" style={{color:'red'}} onClick={()=>onHandleRemoveWishlist(selectedSong._id)}></i>}

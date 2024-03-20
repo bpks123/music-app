@@ -5,7 +5,7 @@ export default function MusicCard(props) {
   const {title,thumbnail,artist,id,song}=props
   let artistList
   if(artist){
-     artistList=artist.map((item)=>item.name).join(' & ')
+    artistList=artist.map((item)=>item.name).join(' & ')
 
   }
 

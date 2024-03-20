@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import MusicPlayer from '../components/MusicPlayer'
 import MusicCard from '../components/MusicCard'
+import { useStateProvider } from '../Utils/StateProvider'
 export default function Home() {
   const [getData,setData]=useState([])
+  const [{searchSong,searchClicked},dispatch]=useStateProvider()
   useEffect(()=>{
     util()
   },[])
+  
   async function util(){
     try{
       let response=await fetch('https://academics.newtonschool.co/api/v1/music/song',{
@@ -23,11 +26,15 @@ export default function Home() {
     }
     
   }
+
+  
+
   return (
     <>
       <div className='global-container'>
         
           <div className='music-container'>
+            
           {
             getData.map((obj,index)=>{
               return (

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import { useStateProvider} from '../Utils/StateProvider'
 export default function Navbar() {
   const navigate=useNavigate()
-  const [{token,userName},dispatch]=useStateProvider()
+  const [{token,userName,searchSong,searchClicked},dispatch]=useStateProvider()
+  const [searchValue,setSearchValue]=useState('')
 
 const onHandlerSignOut=()=>{
   sessionStorage.removeItem('token')
@@ -14,7 +15,17 @@ const onHandlerSignOut=()=>{
   dispatch({type:'SET_EMAIL',payload:null})
   navigate('/')
 }
+const onSearchHandler=()=>{
+  if(searchValue.length>0){
+    dispatch({type:'SET_SEARCH_SONG',payload:searchValue})
+    navigate('/search')
+    setSearchValue('')
+  }
+  else{
+    alert("Please type the song name to search!")
+  }
 
+}
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{padding:'20px'}}>
@@ -47,7 +58,10 @@ const onHandlerSignOut=()=>{
         {/* Add more If required */}
       </ul>
       <div className="d-flex justify-content-center align-items-center">
-      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <input className="form-control me-2"
+        value={searchValue}
+        onChange={(e)=>setSearchValue(e.target.value)}
+      type="search" placeholder="Search" aria-label="Search"/>
         <i className="fa-solid fa-magnifying-glass search-hover"
           style={{
             border:"1px solid grey",
@@ -55,6 +69,7 @@ const onHandlerSignOut=()=>{
             borderRadius:'5px',
             marginLeft:'-4px'
           }}
+          onClick={onSearchHandler}
         ></i>
       </div>
       {token ? (

@@ -5,14 +5,15 @@ import MusicPlayer from '../components/MusicPlayer';
 export default function Library() {
   const [{token,selectedSong,favorites},dispatch]=useStateProvider()
   const [getData,setData]=useState([])
+  const [getHeight,setHeight]=useState(window.innerHeight)
   // console.log(favorites)
 
-  // useEffect(()=>{
-  //   favorite();
-  // },[])
   useEffect(()=>{
-    favorite()
-  },[favorites])
+    favorite();
+  },[])
+  // useEffect(()=>{
+  //   favorite()
+  // },[favorites])
  
 async function favorite(){
   let response=await fetch('https://academics.newtonschool.co/api/v1/music/favorites/like',{
@@ -46,7 +47,7 @@ const onHandleRemoveWishlist= async(songId)=>{
 }
   return (
     <>
-      <div style={{backgroundColor:'rgb(146, 144, 144)',minHeight:'528px'}}>
+      <div className='music-box' style={{backgroundColor:'rgb(146, 144, 144)',minHeight:getHeight+'px'}}>
         
           <div className='music-container' >
           {
