@@ -5,6 +5,7 @@ import { useStateProvider } from '../Utils/StateProvider'
 export default function Home() {
   const [getData,setData]=useState([])
   const [{searchSong,searchClicked},dispatch]=useStateProvider()
+  const [getheight,setHeight]=useState(window.innerHeight)
   useEffect(()=>{
     util()
   },[])
@@ -31,7 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <div className='global-container'>
+      <div className='global-container' style={{minHeight:getheight+'px'}} >
         
           <div className='music-container'>
             

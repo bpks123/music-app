@@ -6,6 +6,7 @@ export default function SearchSong() {
     const [{searchSong,searchClicked},dispatch]=useStateProvider()
     const [dataFound,setDataFound]=useState("")
     const [data,setData]=useState([])
+    const [getheight,setHeight]=useState(window.innerHeight)
     useEffect(()=>{
         if(searchSong){
             OnHandleSearchSong()
@@ -39,7 +40,7 @@ export default function SearchSong() {
     }
   return (
     <>
-    <div className='global-container'>
+    <div className='global-container' style={{minHeight:getheight+'px'}}>
     {(<h1 style={{textAlign:'center'}}>{dataFound}</h1>)} 
         
         <div className='music-container'>
