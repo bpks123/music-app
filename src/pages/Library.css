@@ -1,0 +1,20 @@
+.library-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.library-container i{
+    background-color:red;
+    margin-left:40%;
+    cursor:pointer;
+    padding:10px;
+    border-Radius:50%;
+}
+@media (max-width:550px) {
+    .library-container{
+        margin-left: 20%;
+    }
+    .library-container i{
+        margin-left: 10%;
+    }
+}

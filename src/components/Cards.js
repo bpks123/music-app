@@ -4,7 +4,6 @@ import noNameImage from '../photos/no-name.jpg'
 export default function Cards({posts}) {
 
     const [getTitle,setTitle]=useState(posts.content.slice(0,50))
-    console.log(getTitle)
   return (
     <div className='card-container'>
       <div className='card-profile'>
@@ -13,6 +12,7 @@ export default function Cards({posts}) {
         }
         <div className='card-profile-info'>
             <h4>{getTitle}</h4>
+
             <div>By : {posts.author?posts.author.name:'No Name'}</div>
         </div>
       </div>

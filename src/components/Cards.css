@@ -1,8 +1,9 @@
 .card-container{
-    border: 1px solid black;
-    width: 500px;
+    border: 1px solid rgb(187, 184, 184);
+    width: 550px;
     min-height: 250px;
     border-radius: 10px;
+    background-color: rgb(187, 184, 184);
 }
 .card-profile{
     display: flex;
@@ -33,7 +34,7 @@
     gap: 2px;
 }
 .card-image{
-    width: 400px;
+    width: 450px;
     border-radius: 5px;
 }
 .card-channel{
@@ -52,4 +53,12 @@
 }
 .like-comment:hover{
     color: rgb(34, 116, 240);
+}
+@media (max-width:550px) {
+    .card-container{
+        width: 100%;
+    }
+    .card-content img{
+        width: 80%;
+    }
 }

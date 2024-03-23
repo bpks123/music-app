@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useStateProvider } from '../Utils/StateProvider';
 import MusicCard from '../components/MusicCard'
 import MusicPlayer from '../components/MusicPlayer';
+import './Library.css'
 export default function Library() {
   const [{token,selectedSong,favorites},dispatch]=useStateProvider()
   const [getData,setData]=useState([])
@@ -49,7 +50,7 @@ const onHandleRemoveWishlist= async(songId)=>{
     <>
       <div className='music-box' style={{backgroundColor:'rgb(146, 144, 144)',minHeight:getHeight+'px'}}>
         
-          <div className='music-container' >
+          <div className='library-container' >
           {
             getData.map((obj,index)=>{
               return (<div key={index}>
@@ -62,9 +63,10 @@ const onHandleRemoveWishlist= async(songId)=>{
                 id={index}
                 song={obj}
               />
-              <i className="fa-solid fa-trash" 
-                style={{background:'white',marginLeft:'40%',cursor:'pointer',padding:'10px',borderRadius:'50%'}}
-              onClick={()=>onHandleRemoveWishlist(obj._id)}></i></div>
+              <i className="fa-solid fa-trash"                 
+              onClick={()=>onHandleRemoveWishlist(obj._id)}></i>
+              
+              </div>
                 
               
               )
