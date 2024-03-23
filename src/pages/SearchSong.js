@@ -25,7 +25,7 @@ export default function SearchSong() {
                 const result=await response.json()
                 console.log(result.data)
                 setData(result.data)
-                setDataFound(`Search result for ${searchSong}`)
+                setDataFound(`Search result for '${searchSong}'`)
             }
             else{
                 setData([])
