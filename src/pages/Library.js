@@ -8,7 +8,6 @@ export default function Library() {
   const [getData,setData]=useState([])
   const [getHeight,setHeight]=useState(window.innerHeight)
   // console.log(favorites)
-
   useEffect(()=>{
     favorite();
   },[])
