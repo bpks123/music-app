@@ -7,7 +7,11 @@ export default function Cards({posts}) {
     const [getTitle,setTitle]=useState(posts.content.slice(0,50))
     const [isLike,setIsLike]=useState(false)
     const [getlikeCount,setLikeCount]=useState(posts.likeCount)
-
+    const [getIsComment,setIsComment]=useState(false)
+    const [getDate,setDate]=useState('')
+    const [getComment,setComment]=useState('')
+    const [isCommented,setIsCommented]=useState(false)
+    const [getCommentContent,setCommentContent]=useState('')
     const onClickLike=async(id)=>{
       try{
         let response=await fetch(`https://academics.newtonschool.co/api/v1/quora/like/${id}`,{
@@ -30,6 +34,48 @@ export default function Cards({posts}) {
         alert(error.message)
       }
     }
+    async function onHandleClickComment(id){
+      try{
+        let response=await fetch(`https://academics.newtonschool.co/api/v1/quora/post/${id}/comments`,{
+          method:'GET',
+          headers:{
+          projectId:'l2uaz7omaxbe',
+          Authorization: `Bearer ${token}`
+        },
+        body:null
+        })
+        console.log(response)
+        // if(response.status==201){
+        //     setIsLike(true)
+        //     setLikeCount(getlikeCount+1)
+        // }
+        // if(response.status==400){
+        //   alert("You have already liked the post!")
+        // }
+      }catch(error){
+        alert(error.message)
+      }
+    }
+  const onClickComment=()=>{
+    setIsComment(!getIsComment)
+    let date=new Date()
+    date=`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+    setDate(date)
+    // console.log(date)
+  }  
+  const onClickAddComment=async(id)=>{
+    if(!getComment){
+      alert('Please add comment')
+    }
+    else{
+      setIsCommented(true)
+      setCommentContent(getComment)
+      setComment('')
+      onHandleClickComment(id)
+
+    }
+  }
+
   return (
     <div className='card-container'>
       <div className='card-profile'>
@@ -56,9 +102,30 @@ export default function Cards({posts}) {
         </div>
         <div className='card-channel-info'>
             <div><span onClick={()=>onClickLike(posts._id)} className='like-comment'>{isLike?'UnLike':'Like'}</span> {getlikeCount}</div>
-            <div><span className='like-comment'>Comments:</span> {posts.commentCount}</div>
+            <div><span onClick={onClickComment} className='like-comment'>Comments:</span> {posts.commentCount}</div>
         </div>
       </div>
+      {
+        getIsComment 
+        && 
+        <div className='card-comment'>
+        <h5>Comments :-</h5>
+        <div className='d-flex p-1 card-comment-input' >
+          <input type='text' value={getComment} onChange={(e)=>setComment(e.target.value)} className='form-control' placeholder='Post your Comments..'></input>
+          <i onClick={()=>onClickAddComment(posts._id)} className="fa-solid fa-circle-chevron-right"></i>
+        </div>
+        {
+          isCommented 
+          && 
+          <div className='card-comments-content'>
+          <div>{getCommentContent}</div>
+          <div className='card-comment-date'>{getDate}</div>          
+        </div>
+        }
+        
+      </div>
+      }
+      
     </div>
   )
 }
