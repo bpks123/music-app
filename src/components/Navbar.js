@@ -31,11 +31,11 @@ const onSearchHandler=()=>{
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-body-tertiary "
-        style={{ padding: "20px" }}
+        className="navbar navbar-expand-lg"
+        style={{ padding: "20px", backgroundColor:istoggle?'rgb(102, 98, 98)':'' }}
       >
-        <div className="container-fluid">
-          <Link className="navbar-brand" to={"/"}>
+        <div className="container-fluid" style={{color:istoggle?'white':''}}>
+          <Link className="navbar-brand" to={"/"} style={{color:istoggle?'white':''}}>
             <i className="fa-solid fa-music"></i>
             <span className="icon-music">Music</span>
           </Link>
@@ -64,7 +64,7 @@ const onSearchHandler=()=>{
                   <span
                     className="nav-link active"
                     aria-current="page"
-                    style={{ fontWeight: "700" }}
+                    style={{ fontWeight: "700",color:istoggle?'white':'' }}
                   >
                     Home
                   </span>
@@ -82,7 +82,7 @@ const onSearchHandler=()=>{
                   <span
                     className="nav-link active"
                     aria-current="page"
-                    style={{ fontWeight: "700" }}
+                    style={{ fontWeight: "700",color:istoggle?'white':'' }}
                   >
                     Social
                   </span>
@@ -100,7 +100,7 @@ const onSearchHandler=()=>{
                   <span
                     className="nav-link active"
                     aria-current="page"
-                    style={{ fontWeight: "700" }}
+                    style={{ fontWeight: "700",color:istoggle?'white':'' }}
                   >
                     Library
                   </span>
@@ -138,12 +138,13 @@ const onSearchHandler=()=>{
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
+                    style={{color:istoggle?'white':''}}
                   >
                     <i
                       className="fa-regular fa-circle-user"
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "20px",color:istoggle?'white':'' }}
                     ></i>
-                    <span>&nbsp;{userName}</span>
+                    <span style={{color:istoggle?'white':''}}>&nbsp;{userName}</span>
                   </a>
                   <ul className="dropdown-menu">
                     <li>
