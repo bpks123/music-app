@@ -4,7 +4,7 @@ import MusicCard from '../components/MusicCard'
 import { useStateProvider } from '../Utils/StateProvider'
 export default function Home() {
   const [getData,setData]=useState([])
-  const [{searchSong,searchClicked},dispatch]=useStateProvider()
+  const [{searchSong,istoggle,searchClicked},dispatch]=useStateProvider()
   const [getheight,setHeight]=useState(window.innerHeight)
   useEffect(()=>{
     util()
@@ -34,7 +34,7 @@ export default function Home() {
     <>
       <div className='global-container' style={{minHeight:getheight+'px'}} >
         
-          <div className='music-container'>
+          <div className={`music-container ${istoggle?'toggle-mode':''}`}>
             
           {
             getData.map((obj,index)=>{

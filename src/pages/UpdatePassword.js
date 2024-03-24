@@ -3,8 +3,10 @@ import { Link,useNavigate } from 'react-router-dom'
 import { useStateProvider} from '../Utils/StateProvider'
 
 export default function UpdatePassword() {
-    const [{token,userName,userEmail},dispatch]=useStateProvider();
+    const [{token,istoggle,userName,userEmail},dispatch]=useStateProvider();
     const navigate=useNavigate()
+    const [getHeight,setHeight]=useState(window.innerHeight)
+
     const [getData,setData]=useState({
         name:userName?userName:'',
         email:userEmail?userEmail:'',
@@ -53,7 +55,7 @@ export default function UpdatePassword() {
     }
   return (
     <>
-      <div className='register-container'>
+      <div className={`${istoggle?'register-container-toggle':'register-container'} `} style={{minHeight:getHeight+'px'}}>
         <div className='row'>
             <div className='col-4'>
 

@@ -4,10 +4,10 @@ import { useStateProvider} from '../Utils/StateProvider'
 
 export default function Navbar() {
   const navigate=useNavigate()
-  const [{token,userName,searchSong,searchClicked},dispatch]=useStateProvider()
+  const [{token,userName,istoggle,searchSong,searchClicked},dispatch]=useStateProvider()
   const [searchValue,setSearchValue]=useState('')
-  const [isChecked,setIsChecked]=useState(false)
-console.log(isChecked)
+
+
 const onHandlerSignOut=()=>{
   sessionStorage.removeItem('token')
   sessionStorage.removeItem('userName')
@@ -31,7 +31,7 @@ const onSearchHandler=()=>{
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-body-tertiary"
+        className="navbar navbar-expand-lg bg-body-tertiary "
         style={{ padding: "20px" }}
       >
         <div className="container-fluid">
@@ -131,7 +131,7 @@ const onSearchHandler=()=>{
             </div>
             {token ? (
               <ul className="navbar-nav">
-                <li className="nav-item dropdown left-nav">
+                <li className="nav-item dropdown left-nav-login">
                   <a
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -149,11 +149,12 @@ const onSearchHandler=()=>{
                     <li>
                       <button
                         className="dropdown-item"
-                        onClick={onHandlerSignOut}
+                        onClick={()=>navigate('/profile')}
                       >
-                        Sign Out
+                        Profile
                       </button>
                     </li>
+                    
                     <li>
                       <button
                         className="dropdown-item"
@@ -161,18 +162,27 @@ const onSearchHandler=()=>{
                       >
                         Update Password
                       </button>
-                    </li >
-                    <li className="form-check form-switch" style={{paddingLeft:'35%'}}>
+                    </li>
+                    <li
+                      className="form-check form-switch"
+                      style={{ paddingLeft: "35%" }}
+                    >
                       <input
                         className="form-check-input"
                         type="checkbox"
-                        checked={isChecked}
-                        onChange={()=>{
-                          setIsChecked(!isChecked)
-                          // console.log(isChecked)
+                        onChange={() => {
+                          dispatch({ type: "TOGGLE", payload: !istoggle });
                         }}
                       />
-                      Dark Mode
+                      {istoggle ? "Light Mode" : "Dark Mode"}
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={onHandlerSignOut}
+                      >
+                        Sign Out
+                      </button>
                     </li>
                   </ul>
                 </li>
@@ -193,7 +203,7 @@ const onSearchHandler=()=>{
                     ></i>
                     <span>&nbsp;{userName}</span>
                   </a>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu left-nav-notlogin">
                     <li>
                       <Link className="dropdown-item" to="/login">
                         Login

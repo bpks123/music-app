@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import './Cards.css'
 import noNameImage from '../photos/no-name.jpg'
 import { useStateProvider } from '../Utils/StateProvider'
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function Cards({posts}) {
   
     const navigate=useNavigate()
-    const [{token},dispatch]=useStateProvider()
+    const [{token,istoggle},dispatch]=useStateProvider()
     const [getTitle,setTitle]=useState(posts.content.slice(0,50))
     const [isLike,setIsLike]=useState(false)
     const [getlikeCount,setLikeCount]=useState(posts.likeCount)
@@ -96,7 +96,7 @@ export default function Cards({posts}) {
   }
 
   return (
-    <div className='card-container'>
+    <div className={`${istoggle?'card-container-toggle':'card-container'}`}>
       <div className='card-profile'>
         {
             posts.author.profileImage?<img src={posts.author.profileImage}/>:<img src={noNameImage}/>
@@ -131,7 +131,7 @@ export default function Cards({posts}) {
         <h5>Comments :-</h5>
         <div className='d-flex p-1 card-comment-input' >
           <input type='text' value={getComment} onChange={(e)=>setComment(e.target.value)} className='form-control' placeholder='Post your Comments..'></input>
-          <i onClick={()=>onClickAddComment(posts._id)} className="fa-solid fa-circle-chevron-right"></i>
+          <i onClick={()=>onClickAddComment(posts._id)} className="fa-solid fa-circle-chevron-right" style={{color:'black'}}></i>
         </div>
         {
           isCommented 

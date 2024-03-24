@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import Social from './pages/Social';
 import SearchSong from './pages/SearchSong';
 import UpdatePassword from './pages/UpdatePassword';
+import Profile from './pages/Profile';
 import { useStateProvider } from './Utils/StateProvider';
 
 
@@ -34,6 +35,9 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/search' element={<SearchSong/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/profile' element={<ProtectedRoute>
+          <Profile/>
+        </ProtectedRoute>}/>
         <Route path='/library' element={<ProtectedRoute>
           <Library/>
         </ProtectedRoute>}/>

@@ -5,6 +5,14 @@
     border-radius: 10px;
     background-color: rgb(187, 184, 184);
 }
+.card-container-toggle{
+    border: 1px solid rgb(187, 184, 184);
+    width: 550px;
+    min-height: 250px;
+    border-radius: 10px;
+    background-color: rgb(75, 71, 71);
+}
+/* rgb(75, 71, 71) */
 .card-profile{
     display: flex;
     justify-content: space-between;

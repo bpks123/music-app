@@ -10,6 +10,7 @@ export const initialState = {
     favorites: [],
     userEmail:sessionStorage.getItem('userEmail'),
     searchSong: null,
+    istoggle:false,
   };
 
   const reducer=(state,action)=>{
@@ -34,7 +35,8 @@ export const initialState = {
       return { ...state, searchSong: action.payload };
     case "ADD_FAVORITE":
       return { ...state, favorites: action.payload };
-    
+    case "TOGGLE":
+      return {...state,istoggle:action.payload};
 
     default:
       return state;

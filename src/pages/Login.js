@@ -4,6 +4,8 @@ import { useStateProvider} from '../Utils/StateProvider'
 export default function Login() {
   const [{token,userName},dispatch]=useStateProvider();
   const navigate=useNavigate()
+  const [getheight,setHeight]=useState(window.innerHeight)
+
   const [getData,setData]=useState({
     name:'',
     email:'',
@@ -57,7 +59,7 @@ export default function Login() {
   }
   return (
     <>
-    <div className='register-container'>
+    <div className='register-container' style={{minHeight:getheight+'px'}}>
       <div className='row'>
         <div className='col-4'>
 

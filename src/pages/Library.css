@@ -1,3 +1,6 @@
+.music-box{
+    background-Color:rgb(146, 144, 144);
+}
 .library-container{
     display: flex;
     flex-wrap: wrap;

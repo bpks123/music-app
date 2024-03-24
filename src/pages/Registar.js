@@ -9,6 +9,8 @@ export default function Registar() {
     password:'',
     appType:'music',
   })
+  const [getheight,setHeight]=useState(window.innerHeight)
+
   const onChangeHandler=(event)=>{
     setData({...getData,[event.target.name]:event.target.value})
     // console.log(getData)
@@ -52,7 +54,7 @@ export default function Registar() {
     }
   return (
     <>
-    <div className='register-container'>
+    <div className='register-container' style={{minHeight:getheight+'px'}}>
       <div className='row'>
         <div className='col-4'>
 

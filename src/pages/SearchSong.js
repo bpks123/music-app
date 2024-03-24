@@ -3,7 +3,7 @@ import { useStateProvider } from '../Utils/StateProvider'
 import MusicCard from '../components/MusicCard'
 import MusicPlayer from '../components/MusicPlayer'
 export default function SearchSong() {
-    const [{searchSong,searchClicked},dispatch]=useStateProvider()
+    const [{searchSong,istoggle,searchClicked},dispatch]=useStateProvider()
     const [dataFound,setDataFound]=useState("")
     const [data,setData]=useState([])
     const [getheight,setHeight]=useState(window.innerHeight)
@@ -40,10 +40,10 @@ export default function SearchSong() {
     }
   return (
     <>
-    <div className='global-container' style={{minHeight:getheight+'px'}}>
-    {(<h1 style={{textAlign:'center'}}>{dataFound}</h1>)} 
+    <div className='global-container' style={{minHeight:getheight+'px',backgroundColor:istoggle?'rgb(34, 33, 33)':''}}>
+    {(<h1 style={{textAlign:'center',color:istoggle?'white':''}}>{dataFound}</h1>)} 
         
-        <div className='music-container'>
+        <div className={`music-container ${istoggle?'toggle-mode':''}`}>
             {
                 data?
                 data.map((obj,index)=>{

@@ -1,8 +1,10 @@
 import React,{useEffect, useState} from 'react'
 import Cards from '../components/Cards'
 import loading from '../photos/loading.gif'
+import { useStateProvider } from '../Utils/StateProvider'
 
 export default function Social() {
+  const [{istoggle}]=useStateProvider()
   const [getheight,setHeight]=useState(window.innerHeight)
   const [getData,setData]=useState([])
   const [loadingTrue,setLoadingTrue]=useState(true)
@@ -122,7 +124,7 @@ const OnClickPrev=()=>{
 
   return (
     <>
-    <div className='global-container' style={{minHeight:getheight+'px'}}>
+    <div className={`${istoggle?'toggle-mode':'global-container'}`} style={{minHeight:getheight+'px'}}>
       {
         loadingTrue?<img
         style={{position:'absolute', width:'150px',left:'45%',top:'40%'}}

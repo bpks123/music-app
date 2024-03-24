@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function MusicPlayer() {
-  const [{selectedSong,token,favorites},dispatch]=useStateProvider()
+  const [{selectedSong,istoggle,token,favorites},dispatch]=useStateProvider()
   const navigate=useNavigate()
   const [getWatchlist,setWatchList]=useState(false)
   let artistList=''
@@ -87,7 +87,7 @@ useEffect(()=>{
     <>
     {
       (selectedSong) ? (
-      <section className='music-player'>      
+      <section className={`${istoggle?'music-player-toggle':'music-player'}`}>      
         <img
               src={selectedSong.thumbnail}
               height={"50"}
