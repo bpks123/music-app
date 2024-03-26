@@ -1,22 +1,49 @@
 .music-box{
     background-Color:rgb(146, 144, 144);
+    width: 100%;
+
 }
 .library-container{
     display: flex;
     flex-wrap: wrap;
+    gap: 5%;
     justify-content: center;
+    padding: 10px;
+    padding-top: 30px;
+}
+.library-card{
+    position: relative;
+    /* border: 1px solid red; */
+    width: 160px;
+    min-height: 200px;
+    text-align: center;
+    padding: 5px;
+}
+.library-card img{
+    width: 100%;
+    border-radius: 10px;
+    
+}
+.library-card img:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s;
 }
 .library-container i{
-    background-color:red;
-    margin-left:40%;
+    /* background-color:red; */
+    /* margin-left:40%; */
     cursor:pointer;
-    padding:10px;
-    border-Radius:50%;
+    font-size: 20px;
+    /* padding:10px; */
+    /* border-Radius:50%; */
+}
+.library-container i:hover{
+    color: red;
 }
 @media (max-width:550px) {
-    .library-container{
+    /* .library-container{
         margin-left: 20%;
-    }
+    } */
     .library-container i{
         margin-left: 10%;
     }

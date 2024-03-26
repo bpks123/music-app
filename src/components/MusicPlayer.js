@@ -16,7 +16,6 @@ useEffect(()=>{
   if(selectedSong && token){
     setWatchList(false)
     favorite()
-
   }
 },[selectedSong])
   async function favorite(){
@@ -92,7 +91,8 @@ useEffect(()=>{
               src={selectedSong.thumbnail}
               height={"50"}
               width={"50"}
-              className='bannerImg'
+              style={{paddingLeft:'5px'}}
+              // className='bannerImg'
             />
             {
               token ? (
@@ -105,7 +105,7 @@ useEffect(()=>{
             </div>
             <div>
               <div className='d-flex justify-content-center ' style={{gap:'10px',padding:'10px'}}>
-              <div className='music-title music-long'>{selectedSong.title}</div>
+              <div className='music-title music-long'>{selectedSong.title.length<24?selectedSong.title:selectedSong.title.slice(0,24)}</div>
               {token && !getWatchlist && <i className="fa-regular fa-heart favorite-icon music-long" onClick={()=>onHandlerwishList(selectedSong._id)}></i>}
               {token && getWatchlist && <i className="fa-solid fa-heart favorite-icon music-long" style={{color:'red'}} onClick={()=>onHandleRemoveWishlist(selectedSong._id)}></i>}
            
