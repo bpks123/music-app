@@ -36,8 +36,9 @@ const onSearchHandler=()=>{
       >
         <div className="container-fluid" style={{color:istoggle?'white':''}}>
           <Link className="navbar-brand" to={"/"} style={{color:istoggle?'white':''}}>
-            <i className="fa-solid fa-music"></i>
-            <span className="icon-music">Music</span>
+            {/* <i className="fa-solid fa-music"></i> */}
+            <img src='https://d3dyfaf3iutrxo.cloudfront.net/image/seo_page_images/86cc40cf4a744235b6e0e315654aaaf7.png' style={{width:'30px'}}/>
+            <span className="icon-music">Newton School</span>
           </Link>
           <button
             className="navbar-toggler"
