@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import { useStateProvider} from '../Utils/StateProvider'
-
+import newtonLogo from '../photos/newton-logo.png'
 export default function Navbar() {
   const navigate=useNavigate()
   const [{token,userName,istoggle,searchSong,searchClicked},dispatch]=useStateProvider()
@@ -37,7 +37,7 @@ const onSearchHandler=()=>{
         <div className="container-fluid" style={{color:istoggle?'white':''}}>
           <Link className="navbar-brand" to={"/"} style={{color:istoggle?'white':''}}>
             {/* <i className="fa-solid fa-music"></i> */}
-            <img src='https://d3dyfaf3iutrxo.cloudfront.net/image/seo_page_images/86cc40cf4a744235b6e0e315654aaaf7.png' style={{width:'30px'}}/>
+            <img src={newtonLogo} style={{width:'30px'}}/>
             <span className="icon-music">Newton School</span>
           </Link>
           <button
